@@ -27,7 +27,7 @@ function SearchPage(props) {
 function Content(props) {
 
   return (
-    <div className="content">
+    <div className="content" id={props.id}>
       <a href={props.url} target="_blank">
         <p>{props.url}</p>
         <h4>{props.title}</h4>
@@ -43,6 +43,7 @@ function ContentPage(props) {
   for (let i=0; i<props.data.length; i++){
     list.push(
       <Content 
+        key={i}
         url={props.data[i].url} 
         title={props.data[i].title} 
       />
