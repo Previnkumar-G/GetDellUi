@@ -2,6 +2,7 @@
 body {
   font-family: Arial;
   padding: 1%;
+  background-color: #f3f3f3;
 }
 
 * {
@@ -20,7 +21,7 @@ body {
   border: 1px solid grey;
   float: left;
   width: 80%;
-  background: #f1f1f1;
+  
 }
 
 .search-page button {
@@ -45,8 +46,14 @@ body {
   display: table;
 }
 
+.search-page h2 {
+  color: #0b7dda;
+  font-size: xx-large;
+  padding-left:10px;
+}
+
 .content-page {
-  padding: 5%
+  padding: 4%
 }
 
 .content {
@@ -60,6 +67,12 @@ body {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   padding-left: 2%;
   padding-top: 1%;
+  opacity: 0.8;
+}
+
+.content:hover {
+  opacity: 1;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 2px -2px rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .content a:link {
@@ -77,4 +90,48 @@ body {
 .content h4{
   font-family: "serif";
   font-size: large;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
 }

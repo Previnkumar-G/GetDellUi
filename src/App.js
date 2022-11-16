@@ -41,22 +41,28 @@ function Content(props) {
 function ContentPage(props) {
 
   const list = []
-  for (let i=0; i<props.data.length; i++){
-    list.push(
-      <Content 
-        key={i}
-        url={props.data[i].url} 
-        title={props.data[i].title} 
-        summary={props.data[i].summary}
-      />
-    )
-  }
+  if (props.isLoading === false)
+  {
+    for (let i=0; i<props.data.length; i++){
+      list.push(
+        <Content 
+          key={i}
+          url={props.data[i].url} 
+          title={props.data[i].title} 
+          summary={props.data[i].summary}
+        />
+      )
+    }
 
-  return (
-    <div className='content-page'>
-      {list}
-    </div>
-  )
+    return (
+      <div className='content-page animate-bottom'>
+        {list}
+      </div>
+    )
+
+  } else {
+      return <div className="loader"></div>
+  }
 
 }
 
@@ -77,18 +83,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [] 
+      data: [] ,
+      isLoading: false
     };
 
   }
 
   async handleSearch(searchTerm) {
 
+    this.setState({
+      isLoading: true,
+      data: this.state.data
+    })
     const data = await search(searchTerm)
-
     console.log(`in handlesearch - ${data}`)
     this.setState({
-      data: data
+      data: data,
+      isLoading: false
     });
     
   }
@@ -98,7 +109,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <SearchPage handleSearch={() => this.handleSearch(document.getElementById("search").value)}/>
-        <ContentPage data={this.state.data} />
+        <ContentPage data={this.state.data} isLoading={this.state.isLoading}/>
       </div>
     );
 
