@@ -68,7 +68,7 @@ function ContentPage(props) {
 
 async function search(searchTerm) {
 
-  const response = await fetch(`http://127.0.0.1:8009/godell_search_engine?` + new URLSearchParams({searchTerm: searchTerm}), {
+  const response = await fetch(`http://10.107.115.39:8009/godell_search_engine?` + new URLSearchParams({searchTerm: searchTerm}), {
   //const response = await fetch(`http://localhost:5000/search?` + new URLSearchParams({searchTerm: searchTerm}), {
       method: 'GET'
     })
