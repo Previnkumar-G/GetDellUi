@@ -31,6 +31,7 @@ function Content(props) {
       <a href={props.url} target="_blank">
         <p>{props.url}</p>
         <h4>{props.title}</h4>
+        <p>{props.summary}</p>
       </a>
     </div>
   )
@@ -46,6 +47,7 @@ function ContentPage(props) {
         key={i}
         url={props.data[i].url} 
         title={props.data[i].title} 
+        summary={props.data[i].summary}
       />
     )
   }
